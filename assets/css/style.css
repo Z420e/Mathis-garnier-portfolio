@@ -19,6 +19,10 @@ body {
   border-radius: 5px;
 }
 
+.lol {
+  border-radius: 10px;
+}
+
 
 a {
   color: #e54728;
@@ -581,6 +585,56 @@ section {
   background: #fff;
   border: 2px solid #0563bb;
 }
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.0);;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.floating-button i {
+  margin: 0;
+}
+
+.floating-button:hover {
+  color: #e54728;
+}
+
+.floating-button-top {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.0);;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.floating-button-top i {
+  margin: 0;
+}
+
+.floating-button-top:hover {
+  color: #e54728;
+}
+
+
 
 /*--------------------------------------------------------------
 # Portfolio
