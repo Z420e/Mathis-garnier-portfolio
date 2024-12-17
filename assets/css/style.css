@@ -578,11 +578,16 @@ section {
   border: 2px solid #0563bb;
 }
 
+.button-container {
+  position: relative;
+  text-align: right;
+}
+
 .floating-button {
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: rgba(0, 0, 0, 0.0);;
+  background-color: rgba(0, 0, 0, 0.0);
   color: white;
   border: none;
   padding: 15px 20px;
@@ -603,7 +608,9 @@ section {
 }
 
 .floating-button-top {
-  position: fixed;
+  position: sticky;
+  display: flex;
+  justify-content: center;
   top: 20px;
   left: 20px;
   background-color: rgba(0, 0, 0, 0.0);;
