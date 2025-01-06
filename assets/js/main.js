@@ -363,44 +363,37 @@ const imagesPerPhoto = {
 
 // Fonction pour ouvrir la lightbox avec l'image spécifique
 document.querySelectorAll('.btn-zoom').forEach(button => {
-  button.addEventListener('click', function (event) {
-      event.preventDefault(); // Empêcher l'action par défaut (on ne veut pas suivre un lien)
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // Empêcher l'action par défaut (évite de remonter en haut)
 
-      const lightboxContainer = document.getElementById('lightbox-container');
-      const mainImage = document.getElementById('main-image');
-      const otherImagesContainer = document.getElementById('other-images-container');
+        const lightboxContainer = document.getElementById('lightbox-container');
+        const mainImage = document.getElementById('main-image');
+        const otherImagesContainer = document.getElementById('other-images-container');
 
-      // Trouver l'image sur laquelle on a cliqué
-      const image = this.closest('.portfolio-item').querySelector('img');
-      const imageSrc = image.src;
-      const imageAlt = image.alt;
+        // Trouver l'image sur laquelle on a cliqué
+        const image = this.closest('.portfolio-item').querySelector('img');
+        const imageSrc = image.src;
+        const imageAlt = image.alt;
 
-      // Vider le conteneur avant d'ajouter les nouvelles images
-      otherImagesContainer.innerHTML = '';
+        // Vider le conteneur avant d'ajouter les nouvelles images
+        otherImagesContainer.innerHTML = '';
 
-      // Ajouter les 8 autres images correspondant à cette photo
-      const otherImages = imagesPerPhoto[imageAlt] || [];
+        // Ajouter les 8 autres images correspondant à cette photo
+        const otherImages = imagesPerPhoto[imageAlt] || [];
 
-      otherImages.forEach(src => {
-          const img = document.createElement('img');
-          img.src = src;
-          img.addEventListener('click', function () {
-              mainImage.src = src; // Changer l'image principale au clic
-          });
-          otherImagesContainer.appendChild(img);
-      });
+        otherImages.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.addEventListener('click', function () {
+                mainImage.src = src; // Changer l'image principale au clic
+            });
+            otherImagesContainer.appendChild(img);
+        });
 
-      // Définir l'image principale
-      mainImage.src = imageSrc;
+        // Définir l'image principale
+        mainImage.src = imageSrc;
 
-      // Afficher la lightbox
-      lightboxContainer.style.display = 'flex';
-  });
+        // Afficher la lightbox
+        lightboxContainer.style.display = 'flex';
+    });
 });
-
-// Ajouter un bouton de fermeture
-const closeButton = document.querySelector('.close');
-closeButton.onclick = function () {
-  const lightboxContainer = document.getElementById('lightbox-container');
-  lightboxContainer.style.display = 'none'; // Cacher la lightbox quand on ferme
-};
