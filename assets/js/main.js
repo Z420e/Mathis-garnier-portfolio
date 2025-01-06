@@ -269,3 +269,138 @@
   new PureCounter();
 
 })()
+
+
+// Liste des images supplémentaires pour chaque photo
+const imagesPerPhoto = {
+  'photo-9': [
+    'assets/img/photo/9/photo-9.jpg',
+    'assets/img/photo/9/p9-2.jpg',
+    'assets/img/photo/9/p9-3.jpg',
+    'assets/img/photo/9/p9-4.jpg',
+    'assets/img/photo/9/p9-5.jpg',
+    'assets/img/photo/9/p9-6.jpg',
+    'assets/img/photo/9/p9-7.jpg',
+    'assets/img/photo/9/p9-8.jpg',
+    'assets/img/photo/9/p9-9.jpg',
+    'assets/img/photo/9/p9-10.jpg',
+    'assets/img/photo/9/p9-11.jpg'
+],
+  'photo-8': [
+    'assets/img/photo/8/photo-8.jpg',
+    'assets/img/photo/8/p8-1.jpg',
+    'assets/img/photo/8/p8-2.jpg',
+    'assets/img/photo/8/p8-3.jpg',
+    'assets/img/photo/8/p8-4.jpg',
+    'assets/img/photo/8/p8-5.jpg',
+    'assets/img/photo/8/p8-6.jpg',
+    'assets/img/photo/8/p8-7.jpg',
+    'assets/img/photo/8/p8-8.jpg'
+],
+  'photo-7': [
+    'assets/img/photo/7/photo-7.jpg',
+    'assets/img/photo/7/p7-1.jpg',
+    'assets/img/photo/7/p7-2.jpg',
+    'assets/img/photo/7/p7-3.jpg',
+    'assets/img/photo/7/p7-4.jpg',
+    'assets/img/photo/7/p7-5.jpg',
+    'assets/img/photo/7/p7-6.jpg',
+    'assets/img/photo/7/p7-7.jpg'
+],
+  'photo-6': [
+    'assets/img/photo/6/photo-6.jpg',
+    'assets/img/photo/6/p6-1.jpg',
+    'assets/img/photo/6/p6-2.jpg',
+    'assets/img/photo/6/p6-3.jpg'
+],
+  'photo-5': [
+    'assets/img/photo/5/photo-5.jpg',
+    'assets/img/photo/5/p5-1.jpg',
+    'assets/img/photo/5/p5-2.jpg',
+    'assets/img/photo/5/p5-3.jpg',
+    'assets/img/photo/5/p5-4.jpg',
+    'assets/img/photo/5/p5-5.jpg',
+    'assets/img/photo/5/p5-6.jpg',
+    'assets/img/photo/5/p5-7.jpg'
+],
+  'photo-4': [
+    'assets/img/photo/4/photo-4.jpg',
+    'assets/img/photo/4/p4-1.jpg',
+    'assets/img/photo/4/p4-2.jpg',
+    'assets/img/photo/4/p4-3.jpg',
+    'assets/img/photo/4/p4-4.jpg',
+    'assets/img/photo/4/p4-5.jpg',
+    'assets/img/photo/4/p4-6.jpg',
+    'assets/img/photo/4/p4-7.jpg',
+    'assets/img/photo/4/p4-8.jpg'
+],
+  'photo-3': [
+    'assets/img/photo/3/photo-3.jpg',
+    'assets/img/photo/3/p3-1.jpg',
+    'assets/img/photo/3/p3-2.jpg',
+    'assets/img/photo/3/p3-3.jpg',
+    'assets/img/photo/3/p3-4.jpg'
+],
+  'photo-2': [
+      'assets/img/photo/2/photo-2.jpg',
+      'assets/img/photo/2/p2-1.jpg',
+      'assets/img/photo/2/p2-2.jpg',
+      'assets/img/photo/2/p2-3.jpg',
+      'assets/img/photo/2/p2-4.jpg',
+      'assets/img/photo/2/p2-5.jpg',
+      'assets/img/photo/2/p2-6.jpg'
+  ],
+  'photo-1': [
+      'assets/img/photo/1/photo-1.jpg',
+      'assets/img/photo/1/p1-1.jpg',
+      'assets/img/photo/1/p1-2.jpg',
+      'assets/img/photo/1/p1-3.jpg',
+      'assets/img/photo/1/p1-4.jpg',
+      'assets/img/photo/1/p1-5.jpg',
+      'assets/img/photo/1/p1-6.jpg'
+  ]
+};
+
+// Fonction pour ouvrir la lightbox avec l'image spécifique
+document.querySelectorAll('.btn-zoom').forEach(button => {
+  button.addEventListener('click', function (event) {
+      event.preventDefault(); // Empêcher l'action par défaut (on ne veut pas suivre un lien)
+
+      const lightboxContainer = document.getElementById('lightbox-container');
+      const mainImage = document.getElementById('main-image');
+      const otherImagesContainer = document.getElementById('other-images-container');
+
+      // Trouver l'image sur laquelle on a cliqué
+      const image = this.closest('.portfolio-item').querySelector('img');
+      const imageSrc = image.src;
+      const imageAlt = image.alt;
+
+      // Vider le conteneur avant d'ajouter les nouvelles images
+      otherImagesContainer.innerHTML = '';
+
+      // Ajouter les 8 autres images correspondant à cette photo
+      const otherImages = imagesPerPhoto[imageAlt] || [];
+
+      otherImages.forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.addEventListener('click', function () {
+              mainImage.src = src; // Changer l'image principale au clic
+          });
+          otherImagesContainer.appendChild(img);
+      });
+
+      // Définir l'image principale
+      mainImage.src = imageSrc;
+
+      // Afficher la lightbox
+      lightboxContainer.style.display = 'flex';
+  });
+});
+
+// Ajouter un bouton de fermeture
+const closeButton = document.querySelector('.close');
+closeButton.onclick = function () {
+  const lightboxContainer = document.getElementById('lightbox-container');
+  lightboxContainer.style.display = 'none'; // Cacher la lightbox quand on ferme
+};
