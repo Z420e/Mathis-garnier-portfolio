@@ -397,3 +397,10 @@ document.querySelectorAll('.btn-zoom').forEach(button => {
         lightboxContainer.style.display = 'flex';
     });
 });
+
+// Ajouter un bouton de fermeture
+const closeButton = document.querySelector('.close');
+closeButton.onclick = function () {
+    const lightboxContainer = document.getElementById('lightbox-container');
+    lightboxContainer.style.display = 'none'; // Cacher la lightbox quand on ferme
+};
