@@ -153,7 +153,7 @@ h6 {
 
 @media (min-width: 991px) {
   #main {
-    margin-left: 100px;
+    margin-left: 0%;
   }
 }
 
@@ -173,6 +173,14 @@ h6 {
   height: auto;
 }
 
+.nv {
+  color: #e54728;
+  margin-top: 1vh;
+}
+
+.link {
+  color: #ffffff;
+}
 /* Container de la lightbox */
 #lightbox-container {
   display: none;
@@ -200,8 +208,8 @@ h6 {
 
 /* Image principale */
 .main-image {
-  max-width: 35%;
-  max-height: 80%;
+  max-width: 70vw;
+  max-height: 70vh;
   margin-bottom: 20px;
   border-radius: 10px;
 }
@@ -748,6 +756,8 @@ section {
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
+
+
 
 .portfolio #portfolio-flters {
   padding: 0;
