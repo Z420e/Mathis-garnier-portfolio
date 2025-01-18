@@ -37,7 +37,10 @@ a:hover {
 h1,
 h2,
 h3,
-h4,
+h4 {
+  margin-top: 1.5vh;
+  font-color: 
+}
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
