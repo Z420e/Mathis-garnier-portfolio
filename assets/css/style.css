@@ -37,10 +37,7 @@ a:hover {
 h1,
 h2,
 h3,
-h4 {
-  margin-top: 1.5vh;
-  font-color: 
-}
+h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
@@ -83,9 +80,9 @@ h6 {
   display: flex;
   justify-content: center;
 }
-.ce {
-  font-color: #636363;
-  margin-top: 2vh;
+h4.ce {
+  color: #636363;
+  margin-top: 1.5vh;
 }
 /*--------------------------------------------------------------
 # Preloader
